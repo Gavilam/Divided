@@ -18,7 +18,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Scenary
   - 
   - 
   - 
@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1889163109
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Stuff
+    uniqueID: 3021446329
+    locked: 0
+  - name: Player
+    uniqueID: 796611277
     locked: 0
