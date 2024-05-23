@@ -240,7 +240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9022394870036214811}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.4, y: 1.91, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -308,3 +308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openDoor: {fileID: 8547927262875238487}
   closeDoor: {fileID: 3141360539353833381}
+  isOpenable: 1
+  lockedDoor: {fileID: -45610827, guid: fa42ef94b4212454e98a9b5ac20afd33, type: 3}
+  interactableDoor: {fileID: 852019944, guid: fa42ef94b4212454e98a9b5ac20afd33, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterBehaviour : MonoBehaviour
@@ -25,4 +26,11 @@ public class CharacterBehaviour : MonoBehaviour
     private void FixedUpdate(){
         rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
     }
+
+    /**private void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.tag == "Player"){
+            Rigidbody2D collRb2D = collision.gameObject.GetComponent<Rigidbody2D>();
+            collRb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+    }*/
 }
