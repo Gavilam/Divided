@@ -407,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &893420587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -518,6 +518,60 @@ MonoBehaviour:
   - NAR_CRIOGEN_07
   - NAR_CRIOGEN_08
   - FLASH_EXPERIMENTO_23
+--- !u!1 &1565093454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565093456}
+  - component: {fileID: 1565093455}
+  m_Layer: 0
+  m_Name: Un solo uso
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1565093455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565093454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f741c127f2f7645aa07866a54bbe54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguesCodes:
+  - NAR_CRIOGEN_01
+  - NAR_CRIOGEN_02
+  - NAR_CRIOGEN_03
+  - NAR_CRIOGEN_04
+  - NAR_CRIOGEN_05
+  - NAR_CRIOGEN_06
+  - NAR_CRIOGEN_07
+  - NAR_CRIOGEN_08
+  - FLASH_EXPERIMENTO_23
+--- !u!4 &1565093456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565093454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1585240682
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,3 +1016,4 @@ SceneRoots:
   - {fileID: 807528191}
   - {fileID: 893420588}
   - {fileID: 1781240287}
+  - {fileID: 1565093456}

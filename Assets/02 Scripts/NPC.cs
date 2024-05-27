@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] List<string> dialoguesCodes = new List<string>();
-    int dialogueIndex = 0;
+    [SerializeField] protected List<string> dialoguesCodes = new List<string>();
+    protected int dialogueIndex = 0;
     bool playerInRange = false;
 
     // Update is called once per frame
@@ -25,8 +25,7 @@ public class NPC : MonoBehaviour
             // Si ya se terminaron los dialogos, se oculta la UI y se reinician los dialogos
             if (dialogueIndex >= dialoguesCodes.Count && !DialogueManager.Instance.isShowingDialogue)
             {
-                DialogueManager.Instance.HideUI();
-                dialogueIndex = 0;
+                EndConversation();
             }
             //Si no se estra mostrando ningun dialogo, se inician los dialogos.
             else if (!DialogueManager.Instance.isShowingDialogue)
@@ -40,6 +39,12 @@ public class NPC : MonoBehaviour
                 DialogueManager.Instance.CompleteDialogue();
             }
         }
+    }
+
+    protected virtual void EndConversation()
+    {
+        DialogueManager.Instance.HideUI();
+        dialogueIndex = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
