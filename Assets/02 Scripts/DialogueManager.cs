@@ -27,6 +27,8 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
 
         ReadData();
+        foreach (string s in dialoguesData)
+            Debug.Log(s);
     }
 
     //Inicia la corrutina para monstrar un dialogo
@@ -119,6 +121,7 @@ public class DialogueManager : MonoBehaviour
 
     void SearchDialogue(string code)
     {
+        // Debug.Log(code);
         for (int i = 0; i < dialoguesData.Count; i++)
         {
             if (dialoguesData[i] == code)
@@ -127,5 +130,6 @@ public class DialogueManager : MonoBehaviour
                 tarjetDialogue = dialoguesData[i + 2];
             }
         }
+        // Debug.Log(currentSpeakerName + " + " + tarjetDialogue);
     }
 }

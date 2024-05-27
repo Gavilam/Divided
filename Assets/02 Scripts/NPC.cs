@@ -23,7 +23,7 @@ public class NPC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             // Si ya se terminaron los dialogos, se oculta la UI y se reinician los dialogos
-            if (dialogueIndex >= dialoguesCodes.Count)
+            if (dialogueIndex >= dialoguesCodes.Count && !DialogueManager.Instance.isShowingDialogue)
             {
                 DialogueManager.Instance.HideUI();
                 dialogueIndex = 0;
