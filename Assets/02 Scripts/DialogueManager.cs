@@ -37,11 +37,11 @@ public class DialogueManager : MonoBehaviour
 
     //Inicia la corrutina para monstrar un dialogo
     //además de cambiar el estado actual.
-    public void StartDialogue(string dialogueCode)
+    public void StartDialogue(string dialogueCode, int dataToRead)
     {
         isShowingDialogue = true;
         dialoguePanel.SetActive(true);
-        SearchDialogue(dialogueCode);
+        SearchDialogue(dialogueCode, dataToRead);
         speakerNameText.text = currentSpeakerName;
         StartCoroutine(ShowDialogue());
     }
@@ -123,14 +123,36 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void SearchDialogue(string code)
+    void SearchDialogue(string code, int listChoice)
     {
-        for (int i = 0; i < mainNarrativeData.Count; i++)
+        List<string> list = new List<string>();
+
+        switch (listChoice)
         {
-            if (mainNarrativeData[i] == code)
+            case 0:
+                list = mainNarrativeData;
+                break;
+
+            case 1:
+                list = docsData;
+                break;
+            case 2:
+                list = secondaryData;
+                break;
+            default:
+                Debug.Log("List not found");
+                break;
+        }
+
+        if (list == null)
+            return;
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i] == code)
             {
-                currentSpeakerName = mainNarrativeData[i + 1];
-                tarjetDialogue = mainNarrativeData[i + 2];
+                currentSpeakerName = list[i + 1];
+                tarjetDialogue = list[i + 2];
             }
         }
     }

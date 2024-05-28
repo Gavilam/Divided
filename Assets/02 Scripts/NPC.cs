@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    [SerializeField] DialogueType dialogueType;
     [SerializeField] protected List<string> dialoguesCodes = new List<string>();
     protected int dialogueIndex = 0;
     bool playerInRange = false;
-
+    enum DialogueType { mainNarrative, docInfo, secondaryInfo }
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +31,7 @@ public class NPC : MonoBehaviour
             //Si no se estra mostrando ningun dialogo, se inician los dialogos.
             else if (!DialogueManager.Instance.isShowingDialogue)
             {
-                DialogueManager.Instance.StartDialogue(dialoguesCodes[dialogueIndex]);
+                DialogueManager.Instance.StartDialogue(dialoguesCodes[dialogueIndex], (int)dialogueType);
                 dialogueIndex++;
             }
             // Si es esta mostrando un dialogo, se acompleta.
