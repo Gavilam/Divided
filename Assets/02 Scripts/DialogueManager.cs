@@ -9,7 +9,9 @@ using UnityEngine.UIElements;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
-    public TextAsset file;
+    public TextAsset mainNarrativeFile;
+    public TextAsset docsContentFile;
+    public TextAsset secondaryInfoFile;
     [Header("UI elements")]
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] TextMeshProUGUI speakerNameText;
@@ -20,22 +22,26 @@ public class DialogueManager : MonoBehaviour
     public bool isShowingDialogue = false;
     string tarjetDialogue = "";
     string currentSpeakerName;
-    List<string> dialoguesData = new List<string>();
+    List<string> mainNarrativeData = new List<string>();
+    List<string> docsData = new List<string>();
+    List<string> secondaryData = new List<string>();
 
     private void Awake()
     {
         Instance = this;
 
-        ReadData();
+        ReadData(mainNarrativeData, mainNarrativeFile);
+        ReadData(docsData, docsContentFile);
+        ReadData(secondaryData, secondaryInfoFile);
     }
 
     //Inicia la corrutina para monstrar un dialogo
     //además de cambiar el estado actual.
-    public void StartDialogue(string dialogueCode)
+    public void StartDialogue(string dialogueCode, int dataToRead)
     {
         isShowingDialogue = true;
         dialoguePanel.SetActive(true);
-        SearchDialogue(dialogueCode);
+        SearchDialogue(dialogueCode, dataToRead);
         speakerNameText.text = currentSpeakerName;
         StartCoroutine(ShowDialogue());
     }
@@ -76,10 +82,10 @@ public class DialogueManager : MonoBehaviour
         isShowingDialogue = false;
     }
 
-    void ReadData()
+    void ReadData(List<string> list, TextAsset fileSource)
     {
         //Se lee el contenido de las celdas.
-        string[] data = file.text.Split(new string[] { ",", "\n" }, System.StringSplitOptions.None);
+        string[] data = fileSource.text.Split(new string[] { ",", "\n" }, System.StringSplitOptions.None);
 
         //Se realiza una correccion en los datos leidos.
         string aux = "";
@@ -98,7 +104,7 @@ public class DialogueManager : MonoBehaviour
                 errorFounded = false;
                 aux = aux + "" + s;
                 aux = aux.Replace("\"", "");
-                dialoguesData.Add(aux);
+                list.Add(aux);
                 aux = "";
                 //Se usa para evitar un duplicado de informacion
                 flag = false;
@@ -112,19 +118,41 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 if (flag)
-                    dialoguesData.Add(s);
+                    list.Add(s);
             }
         }
     }
 
-    void SearchDialogue(string code)
+    void SearchDialogue(string code, int listChoice)
     {
-        for (int i = 0; i < dialoguesData.Count; i++)
+        List<string> list = new List<string>();
+
+        switch (listChoice)
         {
-            if (dialoguesData[i] == code)
+            case 0:
+                list = mainNarrativeData;
+                break;
+
+            case 1:
+                list = docsData;
+                break;
+            case 2:
+                list = secondaryData;
+                break;
+            default:
+                Debug.Log("List not found");
+                break;
+        }
+
+        if (list == null)
+            return;
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i] == code)
             {
-                currentSpeakerName = dialoguesData[i + 1];
-                tarjetDialogue = dialoguesData[i + 2];
+                currentSpeakerName = list[i + 1];
+                tarjetDialogue = list[i + 2];
             }
         }
     }
