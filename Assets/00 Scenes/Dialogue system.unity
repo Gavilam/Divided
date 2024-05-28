@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainNarrativeFile: {fileID: 4900000, guid: 91213dcf894e87c45a0955dcd7c6678c, type: 3}
   docsContentFile: {fileID: 4900000, guid: a3c76c1908b7673488be84b52f82ef2a, type: 3}
-  secondaryInfoFile: {fileID: 4900000, guid: 531d149f1ade7e442a6d00c0086419ff, type: 3}
+  secondaryInfoFile: {fileID: 4900000, guid: ffebf803b9467cb4da4bad926ec75772, type: 3}
   dialoguePanel: {fileID: 696109818}
   speakerNameText: {fileID: 1648100392}
   dialogueText: {fileID: 1585240684}
@@ -264,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &359347255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueType: 2
   dialoguesCodes:
-  - INFODOC_ESPERA_04
+  - INFODOC_ESPERA_01
   - GEN_ENERGY_04
   - ARCHSEC2_BIBLIO_01
 --- !u!65 &359347256
@@ -533,7 +533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &893420587
 SpriteRenderer:
   m_ObjectHideFlags: 0
