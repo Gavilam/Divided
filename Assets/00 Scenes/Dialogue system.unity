@@ -238,7 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7b6ca03d7f46c4da07f252106d34d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 4900000, guid: e6b5922a83b71e54ebc0714effe9b7e8, type: 3}
+  mainNarrativeFile: {fileID: 4900000, guid: e6b5922a83b71e54ebc0714effe9b7e8, type: 3}
+  docsContentFile: {fileID: 4900000, guid: a3c76c1908b7673488be84b52f82ef2a, type: 3}
+  secondaryInfoFile: {fileID: 4900000, guid: 531d149f1ade7e442a6d00c0086419ff, type: 3}
   dialoguePanel: {fileID: 696109818}
   speakerNameText: {fileID: 1648100392}
   dialogueText: {fileID: 1585240684}
@@ -407,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &893420587
 SpriteRenderer:
   m_ObjectHideFlags: 0
