@@ -41,6 +41,9 @@ TagManager:
   - name: Background
     uniqueID: 1889163109
     locked: 0
+  - name: 'Hide Stuff '
+    uniqueID: 3868317915
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
