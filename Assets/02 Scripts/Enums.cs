@@ -6,6 +6,9 @@ public static class Enums
 {
     public enum Items
     {
-        PiezaGenerador
+        PiezaGenerador,
+        ID_laboratorio,
+        ID_PC_libreria,
+        ID_limpieza
     }
 }

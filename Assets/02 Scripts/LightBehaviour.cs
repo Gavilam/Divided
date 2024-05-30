@@ -23,8 +23,8 @@ public class LightBehaviour : MonoBehaviour
         lights = GetComponent<Light2D>();
         if (isDark){
             lights.lightType = Light2D.LightType.Point;
-            lights.color = Color.black;
-            //ChangeCharacterLight();
+            //lights.color = Color.black;
+            ChangeCharacterLight();
         }
     }
 

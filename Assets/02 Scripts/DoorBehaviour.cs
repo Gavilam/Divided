@@ -22,14 +22,14 @@ public class DoorBehaviour : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D other){
-        if (other.tag == "Player" && isOpenable){
+        if ((other.tag == "Arkia" || other.tag == "Remi") && isOpenable){
             openDoor.SetActive(true);
             closeDoor.SetActive(false);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other){
-        if (other.tag == "Player" && isOpenable){
+        if ((other.tag == "Arkia" || other.tag == "Remi") && isOpenable){
             closeDoor.SetActive(true);
             openDoor.SetActive(false);
         }
