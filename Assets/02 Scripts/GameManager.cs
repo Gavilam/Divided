@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject Remi;
-    [SerializeField] GameObject Arkia;
-
+    [SerializeField] OneTimeNPC initStory;
     void Start()
     {
-        Arkia.GetComponent<CharacterBehaviour>().enabled = false;
+        initStory.ActivateDialogue();
     }
-
-    // Update is called once per frame
+        
     void Update()
     {
         

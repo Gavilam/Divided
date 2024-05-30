@@ -8,14 +8,23 @@ public class NPC : MonoBehaviour
     [SerializeField] DialogueType dialogueType;
     [SerializeField] protected List<string> dialoguesCodes = new List<string>();
     protected int dialogueIndex = 0;
-    bool playerInRange = false;
     enum DialogueType { mainNarrative, docInfo, secondaryInfo }
-    // Update is called once per frame
+
+    //[SerializeField] GameObject canvas;
+    [SerializeField] Enums.Items[]  neccesaryItems;
+    private bool isActivable = false;
+    private bool isActive = false;
+    
     void Update()
     {
-        //if (!playerInRange) return;
-
-        CheckInput();
+        if (isActive){
+            CheckInput();
+        }
+        else if (isActivable){
+            if (Input.GetKeyDown(KeyCode.E)){
+                ActivateDialogue();
+            }
+        }
     }
 
     //Acciones dependiendo del estado del DialogueManager
@@ -44,6 +53,7 @@ public class NPC : MonoBehaviour
 
     protected virtual void EndConversation()
     {
+        DisactivateDialogue();
         DialogueManager.Instance.HideUI();
         dialogueIndex = 0;
     }
@@ -52,7 +62,7 @@ public class NPC : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            playerInRange = true;
+            isActivable = true;
         }
     }
 
@@ -60,7 +70,22 @@ public class NPC : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            playerInRange = false;
+            DisactivateDialogue();
+            isActivable = false;
         }
+    }
+
+    public void ActivateDialogue(){
+        if(neccesaryItems.Length > 0){
+            
+        }
+        //canvas.SetActive(true);
+        isActive = true;
+    }
+
+    public void DisactivateDialogue(){
+        //canvas.SetActive(false);
+        isActive = false;
+        DialogueManager.Instance.HideUI();
     }
 }
