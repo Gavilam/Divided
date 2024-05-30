@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     [Header("UI elements")]
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] TextMeshProUGUI speakerNameText;
-    [SerializeField] TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueText;
     [Header("Dialogue's properties")]
     [SerializeField] float dialogueSpeed = 0.1f;
     [HideInInspector]

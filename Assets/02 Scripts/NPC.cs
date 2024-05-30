@@ -2,29 +2,48 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPC : MonoBehaviour
 {
     [SerializeField] DialogueType dialogueType;
-    [SerializeField] protected List<string> dialoguesCodes = new List<string>();
+    //[SerializeField] protected List<string> dialoguesCodes = new List<string>();
+    [SerializeField] protected List<Dialogue> dialoguesCodes = new List<Dialogue>();
     protected int dialogueIndex = 0;
     enum DialogueType { mainNarrative, docInfo, secondaryInfo }
 
     //[SerializeField] GameObject canvas;
-    [SerializeField] Enums.Items[]  neccesaryItems;
+    [SerializeField] Enums.Items[] neccesaryItems;
     private bool isActivable = false;
     private bool isActive = false;
-    
+
+
+    [Serializable]
+    public class Dialogue
+    {
+        [Serializable] public class DialogueEvent : UnityEvent<MonoBehaviour> { }
+        public string dialoguesCode;
+        public DialogueEvent OnDialogueBegin = new DialogueEvent();
+    }
+
     void Update()
     {
-        if (isActive){
+        //if (isActive)
+        //{
             CheckInput();
-        }
-        else if (isActivable){
-            if (Input.GetKeyDown(KeyCode.E)){
+        //}
+       /* else if (isActivable)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
                 ActivateDialogue();
             }
-        }
+        }*/
+    }
+
+    public void Test()
+    {
+        Debug.Log("Soy una prueba");
     }
 
     //Acciones dependiendo del estado del DialogueManager
@@ -40,14 +59,15 @@ public class NPC : MonoBehaviour
             //Si no se estra mostrando ningun dialogo, se inician los dialogos.
             else if (!DialogueManager.Instance.isShowingDialogue)
             {
-                DialogueManager.Instance.StartDialogue(dialoguesCodes[dialogueIndex], (int)dialogueType);
+                DialogueManager.Instance.StartDialogue(dialoguesCodes[dialogueIndex].dialoguesCode, (int)dialogueType);
+                dialoguesCodes[dialogueIndex].OnDialogueBegin.Invoke(this);
                 dialogueIndex++;
             }
             // Si es esta mostrando un dialogo, se acompleta.
             else
             {
                 DialogueManager.Instance.CompleteDialogue();
-            }
+            }   
         }
     }
 
@@ -75,15 +95,18 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void ActivateDialogue(){
-        if(neccesaryItems.Length > 0){
-            
+    public void ActivateDialogue()
+    {
+        if (neccesaryItems.Length > 0)
+        {
+
         }
         //canvas.SetActive(true);
         isActive = true;
     }
 
-    public void DisactivateDialogue(){
+    public void DisactivateDialogue()
+    {
         //canvas.SetActive(false);
         isActive = false;
         DialogueManager.Instance.HideUI();
