@@ -17,7 +17,6 @@ public class NPC : MonoBehaviour
     private bool isActivable = false;
     private bool isActive = false;
 
-
     [Serializable]
     public class Dialogue
     {
