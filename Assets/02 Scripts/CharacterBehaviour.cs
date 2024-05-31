@@ -11,6 +11,9 @@ public class CharacterBehaviour : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    [SerializeField] bool isMovementBlocked = true;
+    [SerializeField] bool isChangeBlocked = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,9 +22,11 @@ public class CharacterBehaviour : MonoBehaviour
 
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        UpdateAnimation();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!isMovementBlocked){
+            direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            //UpdateAnimation();
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && !isChangeBlocked)
         {
             Events.ChangeCharacter?.Invoke();
         }
@@ -30,6 +35,14 @@ public class CharacterBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+    }
+
+    public void SetMovementBlocking(bool blockingMovement){
+        isMovementBlocked = blockingMovement;
+    }
+
+    public void SetChangingBlocking(bool blockingChanging){
+        isChangeBlocked = blockingChanging;
     }
 
     private void UpdateAnimation()

@@ -11,6 +11,7 @@ public class DoorBehaviour : MonoBehaviour
 
     [SerializeField] Sprite lockedDoor;
     [SerializeField] Sprite interactableDoor;
+    [SerializeField] GameObject openerEvent;
 
     public void Start(){
         if (!isOpenable){
@@ -35,8 +36,9 @@ public class DoorBehaviour : MonoBehaviour
         }
     }
 
-    public void SetDoorOpenable(bool isOpenable){
-        this.isOpenable = isOpenable;
+    public void SetDoorOpenable(){
+        isOpenable = true;
         closeDoor.GetComponent<SpriteRenderer>().sprite = interactableDoor;
+        if(openerEvent!=null) Destroy(openerEvent);
     }
 }
