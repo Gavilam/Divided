@@ -73,5 +73,3 @@ crashlytics-build.properties
 
 # Specific Folders
 /[Aa]ssets/[Tt]hirdPartyAssets/*
-*.wav
-*.mp3
