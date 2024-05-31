@@ -55,7 +55,8 @@ public class NPC : MonoBehaviour
         //Si no se estra mostrando ningun dialogo, se inician los dialogos.
         else if (!DialogueManager.Instance.isShowingDialogue)
         {
-            DialogueManager.Instance.StartDialogue(dialoguesCodes[dialogueIndex], (int)dialogueType);
+            DialogueManager.Instance.StartDialogue(dialoguesCodes[dialogueIndex].dialoguesCode, (int)dialogueType);
+            dialoguesCodes[dialogueIndex].OnDialogueBegin.Invoke(this);
             dialogueIndex++;
         }
         // Si es esta mostrando un dialogo, se acompleta.
