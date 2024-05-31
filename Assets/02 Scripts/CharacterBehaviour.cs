@@ -24,7 +24,7 @@ public class CharacterBehaviour : MonoBehaviour
     {
         if (!isMovementBlocked){
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-            //UpdateAnimation();
+            UpdateAnimation();
         }
         if (Input.GetKeyDown(KeyCode.Space) && !isChangeBlocked)
         {
