@@ -33,7 +33,6 @@ public class TittleMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Juego cerrado");
         Application.Quit();
     }
 
