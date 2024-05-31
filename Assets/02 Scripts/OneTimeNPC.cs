@@ -7,7 +7,7 @@ public class OneTimeNPC : NPC
     // En vez de reiniciar el dialogo, elimina el objeto
     protected override void EndConversation()
     {
-        DialogueManager.Instance.HideUI();
+        base.EndConversation();
         Destroy(gameObject);
     }
 }

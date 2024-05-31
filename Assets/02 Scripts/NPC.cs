@@ -2,13 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPC : MonoBehaviour
 {
     [SerializeField] DialogueType dialogueType;
-    [SerializeField] protected List<string> dialoguesCodes = new List<string>();
+    //[SerializeField] protected List<string> dialoguesCodes = new List<string>();
+    [SerializeField] protected List<Dialogue> dialoguesCodes = new List<Dialogue>();
     protected int dialogueIndex = 0;
     enum DialogueType { mainNarrative, docInfo, secondaryInfo }
+
+    [Serializable]
+    public class Dialogue
+    {
+        [Serializable] public class DialogueEvent : UnityEvent<MonoBehaviour> { }
+        public string dialoguesCode;
+        public DialogueEvent OnDialogueBegin = new DialogueEvent();
+    }
 
     [SerializeField] Enums.Items[]  neccesaryItems;
     private bool isActive = false;
